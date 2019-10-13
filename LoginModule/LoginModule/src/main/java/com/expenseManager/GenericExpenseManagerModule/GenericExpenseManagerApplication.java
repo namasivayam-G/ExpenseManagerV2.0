@@ -9,14 +9,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableSwagger2
-public class LoginModuleApplication {
+public class GenericExpenseManagerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LoginModuleApplication.class, args);
+		SpringApplication.run(GenericExpenseManagerApplication.class, args);
 	}
-	
-	/*
-	 * @Bean public jwtConfig getjwtConf() { return new jwtConfig(); }
-	 */
-
 }
+
+/*
+ * @Bean public jwtConfig getjwtConf() { return new jwtConfig(); }
+ */

@@ -1,4 +1,4 @@
-package com.expenseManager.UserProfile.models;
+		package com.expenseManager.UserProfile.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +18,7 @@ public class User {
 	
 	@Column(name="PASSWORD")
 	private String password;
+	
 
 	public long getUserId() {
 		return userId;
