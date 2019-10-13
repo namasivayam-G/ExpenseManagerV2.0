@@ -9,10 +9,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableSwagger2
-public class GenericExpenseManagerApplication {
+public class LoginModuleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GenericExpenseManagerApplication.class, args);
+		SpringApplication.run(LoginModuleApplication.class, args);
 	}
 }
 
