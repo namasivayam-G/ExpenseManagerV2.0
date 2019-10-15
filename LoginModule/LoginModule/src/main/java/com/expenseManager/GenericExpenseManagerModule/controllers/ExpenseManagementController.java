@@ -42,4 +42,31 @@ public class ExpenseManagementController {
 	public ExpenseItem test(@RequestBody ExpenseItem it) {
 		return it;
 	}
+	
+	@GetMapping("/monthly-expense/{userId}/{year}/{month}")
+	public Collection<ExpenseItem> getMonthlyExpenses(@PathVariable("userId") long userId,
+			@PathVariable("year") String year,
+			@PathVariable("month") String month){
+		return expService.getMonthlyExpenses(userId, year, month);
+		
+	}
+	
+	@GetMapping("/weekly-expense/{userId}/{year}/{month}/{fromDate}/{toDate}")
+	public Collection<ExpenseItem> getWeeklyExpenses(@PathVariable("userId") long userId, 
+			@PathVariable("year") String year,
+			@PathVariable("month") String month,
+			@PathVariable("fromDate") String fromDate,
+			@PathVariable("toDate") String toDate){
+		return expService.getweeklyExpenses(userId, year, month, fromDate, toDate);
+		
+	}
+	
+	@GetMapping("/daily-expense/{userId}/{year}/{month}/{day}")
+	public Collection<ExpenseItem> getDailyExpenses(@PathVariable("userId") long userId, 
+			@PathVariable("year") String year,
+			@PathVariable("month") String month,
+			@PathVariable("day") String day){
+		return expService.getDailyExpenses(userId, year, month, day);
+	}
+	
 }

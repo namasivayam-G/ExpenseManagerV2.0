@@ -21,7 +21,7 @@ import com.expenseManager.UserProfile.models.User;
 public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 	
 	@ExceptionHandler(UserNotfoundException.class)
-	@ResponseStatus(code=HttpStatus.NOT_FOUND, reason="bla jsjs")
+	@ResponseStatus(code=HttpStatus.NOT_FOUND)
 	@ResponseBody
 	public ResponseEntity<ApiError> handleUserNotFound(UserNotfoundException ex){
 		System.out.println("Coming here,,,,,,,,,,,,,,,,,,,,,,,,,,,,");

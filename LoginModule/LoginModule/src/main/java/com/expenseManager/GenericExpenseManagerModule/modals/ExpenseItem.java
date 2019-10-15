@@ -25,7 +25,7 @@ public class ExpenseItem {
 					            @Parameter(name = ExpenseSequenceGenerator.INCREMENT_PARAM, value = "1"),
 					            @Parameter(name = ExpenseSequenceGenerator.VALUE_PREFIX_PARAMETER, value = "EXP_"),
 					            @Parameter(name = ExpenseSequenceGenerator.NUMBER_FORMAT_PARAMETER, value = "%05d") })
-	private long expenseId;
+	private String expenseId;
 	@Column(name="EXPENSE_DATE")
 	private Date expenseDate;
 	@Column(name="ITEM_NAME")
@@ -37,10 +37,10 @@ public class ExpenseItem {
 	@Column(name="USER_ID")
 	private long userId;
 	
-	public long getExpenseId() {
+	public String getExpenseId() {
 		return expenseId;
 	}
-	public void setExpenseId(long expenseId) {
+	public void setExpenseId(String expenseId) {
 		this.expenseId = expenseId;
 	}
 	public Date getExpenseDate() {
