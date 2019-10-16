@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.expenseManager.GenericExpenseManagerModule.modals.ExpenseItem;
 import com.expenseManager.GenericExpenseManagerModule.services.ExpenseManagmentService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 
 @RestController
+@Api(description="APIs related to the Expense managment")
 @RequestMapping("/expense")
 public class ExpenseManagementController {
 
 	@Autowired
 	ExpenseManagmentService expService;
-
+	
+	@ApiOperation(value="Fetch the List of Expenses made by particular user", response=Collection.class,tags="getExpense")
 	@GetMapping("/total-expenses/{userId}")
 	public Collection<ExpenseItem> getAllExpenses(@PathVariable("userId") long userId) {
 		return expService.getAllExpenses(userId);
