@@ -5,6 +5,8 @@ import java.util.Date;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @Api(description="APIs related to the Expense managment")
 @RequestMapping("/expense")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ExpenseManagementController {
 
 	@Autowired
@@ -34,12 +37,13 @@ public class ExpenseManagementController {
 	}
 	
 	@PostMapping("/addExpense/{userId}")
-	public void addExpense(@RequestBody ExpenseItem expense, @PathVariable("userId") long userId) {
+	public String addExpense(@RequestBody ExpenseItem expense, @PathVariable("userId") long userId) {
 		Date date=java.util.Calendar.getInstance().getTime();  
 		expense.setExpenseDate(date);
 		expense.setUserId(userId);
 		
-		expService.saveExpenseForUser(expense);
+		ExpenseItem expItm =  expService.saveExpenseForUser(expense);
+		return expItm.getExpenseId();
 		
 	}
 	
@@ -72,6 +76,11 @@ public class ExpenseManagementController {
 			@PathVariable("month") String month,
 			@PathVariable("day") String day){
 		return expService.getDailyExpenses(userId, year, month, day);
+	}
+	
+	@DeleteMapping("/deleteExpense")
+	public void deleteExpense(@RequestBody ExpenseItem expense){
+		 expService.deleteExpense(expense);
 	}
 	
 }

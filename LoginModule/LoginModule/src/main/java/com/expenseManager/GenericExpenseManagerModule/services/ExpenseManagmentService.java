@@ -21,8 +21,8 @@ public class ExpenseManagmentService {
 		return emRepo.getAllItemsSortedByDate(userId);
 	}
 
-	public void saveExpenseForUser(ExpenseItem expense) {
-		emRepo.save(expense);
+	public ExpenseItem saveExpenseForUser(ExpenseItem expense) {
+		return emRepo.save(expense);
 		
 	}
 	
@@ -42,4 +42,9 @@ public class ExpenseManagmentService {
 	public Collection<ExpenseItem> getDailyExpenses(long userId, String year, String month, String day) {
 		return emRepo.getExpenseByDate(day, null, month, year, userId, Constants.DAILY);
 	}
+	
+	public void deleteExpense(ExpenseItem expense) {
+		emRepo.delete(expense);
+	}
+	
 }

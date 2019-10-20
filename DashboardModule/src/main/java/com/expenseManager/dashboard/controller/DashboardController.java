@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +20,17 @@ import com.expenseManager.dashboard.service.DashboardService;
 
 @RestController
 @RequestMapping("/dashboard")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class DashboardController {
 	
 	@Autowired
 	DashboardService dashboardService;
 	
-	@GetMapping("/monthly-expense-by-category/{userId}/{year}/{month}/{category}")
+	@GetMapping("/monthly-expense-by-category/{userId}/{year}/{month}")
 	public Map<String,List<ExpenseItem>> getMonthlyExpensesByCategory(@Valid @NotNull @PathVariable(value="userId",required=false) long userId,
 			@PathVariable("year") String year,
-			@PathVariable("month") String month,@PathVariable("category") String category){
-		return dashboardService.getMonthlyExpensesByCategory(userId, year, month,category);
+			@PathVariable("month") String month){
+		return dashboardService.getMonthlyExpensesByCategory(userId, year, month);
 	}
 	
 	@GetMapping("/weekly-expense-by-category/{userId}/{year}/{month}/{fromDate}/{toDate}")

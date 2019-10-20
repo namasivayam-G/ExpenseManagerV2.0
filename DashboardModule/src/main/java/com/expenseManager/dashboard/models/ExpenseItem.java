@@ -6,6 +6,7 @@ public class ExpenseItem {
 	private String expenseId;
 	private Date expenseDate;
 	private String itemName;
+	private String itemCost;
 	private String itemCategory;
 	private String description;
 	private long userId;
@@ -45,6 +46,12 @@ public class ExpenseItem {
 	}
 	public void setUserId(long userId) {
 		this.userId = userId;
+	}
+	public String getItemCost() {
+		return itemCost;
+	}
+	public void setItemCost(String itemCost) {
+		this.itemCost = itemCost;
 	}
 
 }

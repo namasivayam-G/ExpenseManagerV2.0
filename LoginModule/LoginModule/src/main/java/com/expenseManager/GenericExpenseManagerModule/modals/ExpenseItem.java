@@ -30,6 +30,8 @@ public class ExpenseItem {
 	private Date expenseDate;
 	@Column(name="ITEM_NAME")
 	private String itemName;
+	@Column (name="ITEM_COST")
+	private String itemCost;
 	@Column(name="ITEM_CATEGORY")
 	private String itemCategory;
 	@Column(name="DESCRIPTION")
@@ -54,7 +56,7 @@ public class ExpenseItem {
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
-	}
+	}	
 	public String getItemCategory() {
 		return itemCategory;
 	}
@@ -72,6 +74,12 @@ public class ExpenseItem {
 	}
 	public void setUserId(long userId) {
 		this.userId = userId;
+	}
+	public String getItemCost() {
+		return itemCost;
+	}
+	public void setItemCost(String itemCost) {
+		this.itemCost = itemCost;
 	}
 
 }
