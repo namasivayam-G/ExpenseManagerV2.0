@@ -6,7 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.expenseManager.UserProfile.exception.UserNotfoundException;
+import com.expenseManager.UserProfile.exception.UserCustomException;
+import com.expenseManager.UserProfile.models.Response;
 import com.expenseManager.UserProfile.models.User;
 import com.expenseManager.UserProfile.repositories.ProfileRepository;
 
@@ -16,15 +17,18 @@ public class ProfileService {
 	@Autowired
 	ProfileRepository profileRepo;
 
-	public ResponseEntity<Object> getUserProfile(String userName) throws UserNotfoundException {
+	public ResponseEntity<Object> getUserProfile(String userName) throws UserCustomException {
 		if(StringUtils.isEmpty(userName)) {
-			throw new UserNotfoundException("User name is null or empty");
+			Response response=new Response("User name is null or empty");
+			throw new UserCustomException(response);
 		}
 		User res = profileRepo.findByUserName(userName);
 		if(res == null) {
-		throw new UserNotfoundException("No Entry found for specified name"+userName);
+			Response response=new Response("No Entry found for specified name"+ userName);
+		throw new UserCustomException(response);
 		}
 		return new ResponseEntity<Object>(res,HttpStatus.ACCEPTED);
 		
 	}
+
 }

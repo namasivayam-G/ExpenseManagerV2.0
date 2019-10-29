@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.expenseManager.UserProfile.exception.UserNotfoundException;
+import com.expenseManager.UserProfile.exception.UserCustomException;
 import com.expenseManager.UserProfile.models.ApiError;
 import com.expenseManager.UserProfile.models.User;
 
 @RestControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 	
-	@ExceptionHandler(UserNotfoundException.class)
+	@ExceptionHandler(UserCustomException.class)
 	@ResponseStatus(code=HttpStatus.NOT_FOUND)
 	@ResponseBody
-	public ResponseEntity<ApiError> handleUserNotFound(UserNotfoundException ex){
+	public ResponseEntity<ApiError> handleUserNotFound(UserCustomException ex){
 		System.out.println("Coming here,,,,,,,,,,,,,,,,,,,,,,,,,,,,");
 		ApiError apiError = new ApiError("User Not found in System", Arrays.asList("Matter", "No matter"));
 		ResponseEntity<ApiError> res = new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.expenseManager.UserProfile.models.User;
 
 @Repository
-public interface LoginRepository extends JpaRepository<User,Long>{
+public interface LoginRepository {
 
 	
 }

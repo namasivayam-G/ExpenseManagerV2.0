@@ -8,25 +8,36 @@ import javax.persistence.Id;
 @Entity(name="USER_LOGIN_TABLE")
 public class User {
 	
-	@GeneratedValue
 	@Id
-	@Column(name="USER_ID")
-	private long userId;
-	
 	@Column(name="USER_NAME")
 	private String userName;
 	
 	@Column(name="PASSWORD")
 	private String password;
 	
+	@Column(name="EMAIL_ID")
+	private String emailId;
+	
+	@Column(name="PHONE_NUMBER")
+	private String phoneNumber;
+	
 
-	public long getUserId() {
-		return userId;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 
 	public String getUserName() {
 		return userName;
